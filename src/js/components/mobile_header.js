@@ -90,7 +90,7 @@ class MobileHeader extends React.Component {
         const userShow = this.state.hasLogined ?
         <span>
             <Icon type="logout" onClick={this.logout} />
-            <Link>
+            <Link to={`/usercenter`}>
                 <Icon type="inbox" />
             </Link>
         </span>
