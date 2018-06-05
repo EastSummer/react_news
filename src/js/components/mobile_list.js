@@ -1,12 +1,17 @@
 import React from 'react';
 import {Row, Col} from 'antd';
 import {Router, Route, Link, browserHistory} from 'react-router';
+import Tloader from 'react-touch-loader'
 
 export default class MobileList extends React.Component{
     constructor(){
         super()
         this.state = {
-            news: ""
+            news: "",
+            count: 5,
+            hasMore: 0,
+            initializing: 1,
+            refrehedAt: Date.now()
         }
     }
     
@@ -21,7 +26,41 @@ export default class MobileList extends React.Component{
         .then(json=>this.setState({news: json}))
     }
 
+    componentDidMount(){
+        setTimeout(()=>{
+            this.setState({
+                hasMore: 1,
+                initializing: 2
+            })
+        },2e3)
+    }
+
+    loadMore(resolve){
+        setTimeout(()=>{
+            let count = this.state.count;
+            let myFetchOptions = {
+                method: "GET"
+            }
+            this.setState({
+                count: count+5
+            })
+
+            fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="+
+            this.props.type+"&count="+this.state.count, myFetchOptions)
+            .then(response=>response.json())
+            .then(json=>this.setState({news: json}))
+
+            this.setState({
+                hasMore: count>0 && count<50
+            })
+
+            resolve()
+        },2e3)
+    }
+
     render(){
+        const {hasMore, initializing, refrehedAt} = this.state
+
         const {news} =this.state;
         const newsList = news.length ?
         news.map((newsItem, index)=> (
@@ -50,7 +89,13 @@ export default class MobileList extends React.Component{
             <div>
                 <Row>
                     <Col span={24}>
-                        {newsList}
+                        <Tloader className="main" 
+                            onLoadMore={this.loadMore.bind(this)} 
+                            hasMore={hasMore} 
+                            initializing={initializing} >
+                            
+                            {newsList}
+                        </Tloader>
                     </Col>
                 </Row> 
             </div>
