@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, Link, browserHistory} from 'react-router';
+import {Link} from 'react-router-dom';
 import {Row, Col, Menu, Icon, Tabs, message, Form, Input, Button, Checkbox, Modal } from 'antd';
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;

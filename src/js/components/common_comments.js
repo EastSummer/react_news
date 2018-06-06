@@ -1,5 +1,4 @@
 import React from 'react';
-import {Router, Route, Link, browserHistory} from 'react-router';
 import {Row, Col, Menu, Icon, Tabs, message, Form, Input, Button, Card, Modal, notification } from 'antd';
 const FormItem = Form.Item;
 

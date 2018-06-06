@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, hashHistory} from 'react-router';
+import {Route, BrowserRouter, Switch} from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import { Button } from 'antd';
 import 'antd/dist/antd.css';
@@ -16,18 +16,22 @@ export default class Root extends React.Component{
     return (
       <div>
         <MediaQuery query='(min-device-width: 1224px)'>
-          <Router history={hashHistory}>
-            <Route path="/" component={PCIndex}></Route>
-            <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>
-            <Route path="/usercenter" component={PCUserCenter}></Route>
-          </Router>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={PCIndex}></Route>
+              <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>
+              <Route path="/usercenter" component={PCUserCenter}></Route>
+            </Switch>
+          </BrowserRouter>
         </MediaQuery>
         <MediaQuery query='(max-device-width: 1224px)'>
-          <Router history={hashHistory}>
-            <Route path="/" component={MobileIndex}></Route>
-            <Route path="/details/:uniquekey" component={MoblieNewsDetails}></Route>
-            <Route path="/usercenter" component={MobileUserCenter}></Route>
-          </Router>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={MobileIndex}></Route>
+              <Route path="/details/:uniquekey" component={MoblieNewsDetails}></Route>
+              <Route path="/usercenter" component={MobileUserCenter}></Route>
+            </Switch>
+          </BrowserRouter>
         </MediaQuery>
       </div>
     );

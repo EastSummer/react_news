@@ -1,5 +1,4 @@
 import React from 'react';
-import {Router, Route, Link, browserHistory} from 'react-router';
 import {Row, Col, Menu, Icon, Tabs, message, Form, Input, Button, Checkbox, Modal, notification, Upload, Card } from 'antd';
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
@@ -74,7 +73,7 @@ export default class PCUserCenter extends React.Component {
         const {usercollection, usercomments} = this.state;
         const usercollectionList = usercollection.length ?
         usercollection.map((uc, index)=>(
-            <Card key={index} title={uc.uniquekey} extra={<a target="_blank" href={`/#/details/${uc.uniquekey}`}>查看</a>}>
+            <Card key={index} title={uc.uniquekey} extra={<a target="_blank" href={`/details/${uc.uniquekey}`}>查看</a>}>
                 <p>{uc.Title}</p>
             </Card>
         ))
