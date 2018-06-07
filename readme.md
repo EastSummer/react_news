@@ -11,3 +11,5 @@
 * [stackoverflow:Why is React's concept of Virtual DOM said to be more performant than dirty model checking?](https://stackoverflow.com/questions/21109361/why-is-reacts-concept-of-virtual-dom-said-to-be-more-performant-than-dirty-mode)
 
 * [github:virtual-dom](https://github.com/Matt-Esch/virtual-dom)
+
+* [仿react框架](https://jsfiddle.net/eastsummer/3pL6ho4w/)
